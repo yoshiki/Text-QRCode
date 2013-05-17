@@ -27,8 +27,10 @@ POST_CONST
 }
 
 sub test_libqrencode {
-    my $compile_cmd
-        = 'cc -I/usr/local/include -I/usr/include -L/usr/lib -L/usr/local/lib -lqrencode';
+    my $pkgconfig = $ENV{PKG_CONFIG_PATH} || '/usr/local/bin/pkg-config';
+    my $libs = qx|$pkgconfig --libs libqrencode|;
+    chomp $libs;
+    my $compile_cmd = "cc $libs";
     my $libqrencode_url
         = 'http://megaui.net/fukuchi/works/qrencode/index.en.html';
     my $version;

@@ -10,7 +10,7 @@ use vars qw(@ISA $VERSION @EXPORT_OK);
 use Carp qw(croak);
 
 BEGIN {
-    $VERSION = '0.01';
+    $VERSION = '0.02';
     eval {
         require XSLoader;
         XSLoader::load('Text::QRCode', $VERSION);
@@ -103,7 +103,7 @@ Create a QR Code map. This method returns array reference ploted QR Code with th
 
 =item plot_qrcode($text, \%params)
 
-Instant method. C<$text> is input text. C<%params> is same paramater as C<new()>.
+Instant method. C<$text> is input text. C<%params> is same parameter as C<new()>.
 
 =back
 
