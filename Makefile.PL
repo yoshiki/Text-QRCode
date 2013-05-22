@@ -27,7 +27,19 @@ POST_CONST
 }
 
 sub test_libqrencode {
-    my $pkgconfig = $ENV{PKG_CONFIG_PATH} || '/usr/local/bin/pkg-config';
+    my @pkgconfigs = ( '/usr/bin/pkg-config', '/usr/local/bin/pkg-config' );
+    unshift @pkgconfigs, $ENV{PKG_CONFIG_PATH} if defined $ENV{PKG_CONFIG_PATH};
+    my $pkgconfig = '';
+    for my $cmd ( @pkgconfigs ) {
+        if ( -x $cmd ) {
+            $pkgconfig = $cmd;
+            last;
+        }
+    }
+    unless ( $pkgconfig ) {
+        warn "Cannot find pkg-config command.\nSpecify it to PKG_CONFIG_PATH env variable if you have pkg-config cmd";
+        exit 0;
+    }
     my $libs = qx|$pkgconfig --libs libqrencode|;
     chomp $libs;
     my $compile_cmd = "cc $libs";
