@@ -23,6 +23,7 @@ sub MY::post_constants {
 CCFLAGS += $define
 LDDLFLAGS += -lqrencode
 LDFLAGS += -lqrencode
+LDLOADLIBS += -lqrencode
 POST_CONST
 }
 
@@ -66,7 +67,7 @@ EOT
     ;
     close $fh;
 
-    system("$compile_cmd -o test_libqrencode test_libqrencode.c >/dev/null 2>&1") == 0
+    system("$compile_cmd -o test_libqrencode test_libqrencode.c $libs >/dev/null 2>&1") == 0
         or do {
             unlink for qw( test_libqrencode test_libqrencode.c );
             die "*** You must install libqrencode.\n*** See $libqrencode_url";
@@ -85,7 +86,7 @@ int main(int argc, char **argv)
 }
 EOT
     ;
-    system("$compile_cmd -o test_libqrencode1.0.2 test_libqrencode1.0.2.c >/dev/null 2>&1") == 0
+    system("$compile_cmd -o test_libqrencode1.0.2 test_libqrencode1.0.2.c $libs >/dev/null 2>&1") == 0
         and $version = "1.0.2";
 
     open $fh, '>', 'test_libqrencode2.0.0.c';
@@ -101,7 +102,7 @@ int main(int argc, char **argv)
 }
 EOT
     ;
-    system("$compile_cmd -o test_libqrencode2.0.0 test_libqrencode2.0.0.c >/dev/null 2>&1") == 0
+    system("$compile_cmd -o test_libqrencode2.0.0 test_libqrencode2.0.0.c $libs >/dev/null 2>&1") == 0
         and $version = "2.0.0";
 
     unlink for qw( test_libqrencode test_libqrencode.c
