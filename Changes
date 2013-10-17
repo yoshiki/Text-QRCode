@@ -5,6 +5,7 @@ Revision history for Text-QRCode
         - Use QRcode_encodeString() when 'kanji' mode set.
         - Fix typo.
         - A inc/ updated for deprecated methods.
+        - Fix for build and link errors in some platform(debug-ito)
  
 0.01    Fri Oct 31 05:37:44 GMT 2008
         First version, released on an unsuspecting world.
