@@ -117,7 +117,7 @@ Yoshiki Kurihara C<< <kurihara __at__ cpan.org> >>
 
 =head1 LICENCE
 
-Copyright (c) 2007, Yoshiki KURIHARA C<< <kurihara __at__ cpan.org> >>.
+Copyright (c) 2013, Yoshiki KURIHARA C<< <kurihara __at__ cpan.org> >>.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
