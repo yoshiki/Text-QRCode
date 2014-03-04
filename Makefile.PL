@@ -29,7 +29,7 @@ POST_CONST
 
 sub test_libqrencode {
     my @pkgconfigs = ( '/usr/bin/pkg-config', '/usr/local/bin/pkg-config' );
-    unshift @pkgconfigs, $ENV{PKG_CONFIG_PATH} if defined $ENV{PKG_CONFIG_PATH};
+    unshift @pkgconfigs, $ENV{PKG_CONFIG_BIN_PATH} if defined $ENV{PKG_CONFIG_BIN_PATH};
     my $pkgconfig = '';
     for my $cmd ( @pkgconfigs ) {
         if ( -x $cmd ) {
@@ -38,7 +38,7 @@ sub test_libqrencode {
         }
     }
     unless ( $pkgconfig ) {
-        warn "Cannot find pkg-config command.\nSpecify it to PKG_CONFIG_PATH env variable if you have pkg-config cmd";
+        warn "Cannot find pkg-config command.\nSpecify it to PKG_CONFIG_BIN_PATH env variable if you have pkg-config cmd";
         exit 0;
     }
     my $libs = qx|$pkgconfig --libs libqrencode|;
