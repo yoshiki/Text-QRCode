@@ -10,7 +10,7 @@ use vars qw(@ISA $VERSION @EXPORT_OK);
 use Carp qw(croak);
 
 BEGIN {
-    $VERSION = '0.02';
+    $VERSION = '0.03';
     eval {
         require XSLoader;
         XSLoader::load('Text::QRCode', $VERSION);

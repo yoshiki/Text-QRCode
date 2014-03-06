@@ -1,5 +1,8 @@
 Revision history for Text-QRCode
 
+0.03    Thu Mar  6 08:57:19 GMT 2014
+        - Fix to avoid to conflict 'PKG_CONFIG_PATH' env name(ytnnobody).
+
 0.02    Fri May 17 06:12:20 GMT 2013
         - Use pkg-config for finding libqrencode.
         - Use QRcode_encodeString() when 'kanji' mode set.
