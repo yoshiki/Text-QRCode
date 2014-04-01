@@ -14,16 +14,16 @@ auto_install;
 WriteAll;
 
 sub MY::post_constants {
-    my $define = eval { test_libqrencode() };
+    my ($define, $libs) = eval { test_libqrencode() };
     if ( $@ ) {
         warn $@;
         exit 0; # tell cpan testers that this is not a failure
     }
     return <<"POST_CONST";
-CCFLAGS += $define
-LDDLFLAGS += -lqrencode
-LDFLAGS += -lqrencode
-LDLOADLIBS += -lqrencode
+CCFLAGS += $define $libs
+LDDLFLAGS += $libs
+LDFLAGS += $libs
+LDLOADLIBS += $libs
 POST_CONST
 }
 
@@ -41,7 +41,7 @@ sub test_libqrencode {
         warn "Cannot find pkg-config command.\nSpecify it to PKG_CONFIG_BIN_PATH env variable if you have pkg-config cmd";
         exit 0;
     }
-    my $libs = qx|$pkgconfig --libs libqrencode|;
+    my $libs = qx|$pkgconfig --cflags --libs libqrencode|;
     chomp $libs;
     my $compile_cmd = "cc $libs";
     my $libqrencode_url
@@ -110,5 +110,5 @@ EOT
                    test_libqrencode2.0.0 test_libqrencode2.0.0.c );
 
     die "*** Unknown error occured in libqrencode version check process." unless $version;
-    return $define_of{ $version };
+    return ($define_of{ $version }, $libs);
 }
