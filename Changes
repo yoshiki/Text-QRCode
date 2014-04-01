@@ -1,5 +1,9 @@
 Revision history for Text-QRCode
 
+0.04    Tue Apr  1 04:12:18 GMT 2014
+        - Add '--cflags' option to pkg-config for when installed libqrencode
+          in an unusual directory(debug-ito).
+
 0.03    Thu Mar  6 08:57:19 GMT 2014
         - Fix to avoid to conflict 'PKG_CONFIG_PATH' env name(ytnnobody).
 
