@@ -30,13 +30,13 @@ sub new {
 
 sub plot {
     my ( $self, $text ) = @_;
-    $text or croak 'Not enough arguments for plot()';
+    defined $text or croak 'Not enough arguments for plot()';
     return _plot($text, $self->{params});
 }
 
 sub plot_qrcode {
     my ( $text, $params ) = @_;
-    $text or croak 'Not enough arguments for plot()';
+    defined $text or croak 'Not enough arguments for plot()';
     $params ||= {} if !$params || ref $params ne 'HASH';
     return _plot( $text, $params );
 }

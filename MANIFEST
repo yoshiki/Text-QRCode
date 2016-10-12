@@ -21,3 +21,4 @@ QRCode.xs
 README
 t/00-load.t
 t/01-plot.t
+t/02-defined.t
