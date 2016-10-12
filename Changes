@@ -1,5 +1,8 @@
 Revision history for Text-QRCode
 
+0.05    Wed Oct 12 04:30:17 GMT 2016
+        - Add 'defined' to check $text is set '0'(https://rt.cpan.org/Ticket/Display.html?id=117724).
+
 0.04    Tue Apr  1 04:12:18 GMT 2014
         - Add '--cflags' option to pkg-config for when installed libqrencode
           in an unusual directory(debug-ito).
